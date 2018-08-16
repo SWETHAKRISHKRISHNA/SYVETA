@@ -1,20 +1,20 @@
 # SYVETA
-//importing packages for image detection
+/*importing packages for image detection*/
 from imageai.Detection import ObjectDetection
 import os
 
-//importing packages for videocapture
+/*importing packages for videocapture*/
 import numpy as np
 import cv2
 
-//importing packages for sound detection
+/*importing packages for sound detection*/
 from time import sleep
 import RPi.GPIO as GPIO
 
-//importing packages for holograph clone 
+/*importing packages for holograph clone */
 import webbrowser
 
-//code to capture scenes in traffic
+/*code to capture scenes in traffic*/
 cap = cv2.VideoCapture('videos/wa.avi')
 while(cap.isOpened()):
   ret, frame = cap.read()
@@ -26,7 +26,7 @@ while(cap.isOpened()):
 cap.release()
 cv2.destroyAllWindows()
 
-//code to detect ambulance by object recognition
+/*code to detect ambulance by object recognition*/
 execution_path = os.getcwd()
 
 detector = ObjectDetection()
@@ -39,9 +39,9 @@ for eachObject in detections:
     print(eachObject["name"] , " : " , eachObject["percentage_probability"] )
 view raw
 
-//fetch the ambulance object alone to check the condition
+/*fetch the ambulance object alone to check the condition*/
 
-//code to detect sound 
+/*code to detect sound */
 /*record the ambulance siren sound in audio file to compare with the sound detected by sound detection sensor */
     GPIO.setmode(GPIO.BCM)
     # define input pin
@@ -59,14 +59,14 @@ view raw
     finally:
         GPIO.cleanup()
 
-//check the condition
-//use if statement to check both the detection process of sound and object(ambulance)
-//if the condition is true ,the holographic clone is generated
+/*check the condition*/
+/*use if statement to check both the detection process of sound and object(ambulance)*/
+/*if the condition is true ,the holographic clone is generated*/
 
 
-//code to holographic clone
+/*code to holographic clone*/
 /*3D holographic clone is recorded in a video file to tell the pedestrians that "DEAR CITIZENS,THE AMBULANCE IS ON THE WAY,GIVE THEM WAY TO PASS THE SIGNAL"*/
-//The video is stored in ppt and is embedded in holo.html file as to use simple code
+/*The video is stored in ppt and is embedded in holo.html file as to use simple code*/
 
 f = open('holo.html','r')
 //use view commands to display video file
@@ -77,4 +77,4 @@ f.close()
 
 
 
-//continue the capturing process for the next ambulance detection 
+/*continue the capturing process for the next ambulance detection */
